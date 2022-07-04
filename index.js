@@ -65,6 +65,11 @@ function init() {
                     return false;
                 }
             }
+        },
+        {
+            type: 'input',
+            name: 'Description',
+            message: description,            
         }
     ]);
 }
@@ -73,7 +78,8 @@ function init() {
 init()
     .then((result) => {       
         return generateMarkdown(result);
-    }).then(markDownData => {        
+    }).then(markDownData => {     
+        console.log(markDownData);
         //writeToFile('./README.md',markDownData);
     })
     .catch((err) => {
