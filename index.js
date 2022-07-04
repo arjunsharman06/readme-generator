@@ -25,14 +25,14 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = [
     "Enter your Project Title (Required)",
     "Provide a short description explaining the what, why, and how of your project.",
-    "Table of Contents (Optional)",
-    "What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.",
-    "Provide instructions and examples for use.",
+    "Table of Contents",
+    "What are the steps required to install your project?",
+    "Provide instructions and examples for usage of the application.",
     "Write steps so that the other developers can contribute",
     "Write Test Cases for your application"
 ];
 
-const [ title, description, content, installation, usage, contribution, testcase ] = questions;
+const [title, description, , installation, usage, contribution, testcase] = questions;
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -43,8 +43,8 @@ function writeToFile(fileName, data) {
                 return;
             }
             resolve({
-                ok : true,
-                message : "File Created !!!"
+                ok: true,
+                message: "File Created !!!"
             })
         });
     });
@@ -53,9 +53,11 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt([
+
+        // Title
         {
             type: 'input',
-            name: 'title',
+            name: 'Title',
             message: title,
             validate: projectTitle => {
                 if (projectTitle) {
@@ -66,21 +68,59 @@ function init() {
                 }
             }
         },
+
+        // Description
         {
             type: 'input',
             name: 'Description',
-            message: description,            
+            message: description,
+        },
+
+        // Table of Content is directly rendered
+
+        // Installation
+        {
+            type: 'editor',
+            name: 'Installation',
+            message: installation,
+        },
+
+        // Usage
+        {
+            type: 'input',
+            name: 'Usage',
+            message: usage,
+        },
+
+        // Contribution
+        {
+            type: 'input',
+            name: 'Contribution',
+            message: contribution,
+        },
+        {
+            type: 'editor',
+            name: 'TestCase',
+            message: testcase,
+        },
+
+        // License
+        {
+            type: 'list',
+            name: "License",
+            message: "Select the License from the below list",
+            choices: ["None", "MIT", "GPLv3", "AGPL"]
         }
     ]);
 }
 
 // Function call to initialize app
 init()
-    .then((result) => {       
+    .then((result) => {
         return generateMarkdown(result);
-    }).then(markDownData => {     
+    }).then(markDownData => {
         console.log(markDownData);
-        //writeToFile('./README.md',markDownData);
+        writeToFile('./README.md', markDownData);
     })
     .catch((err) => {
         console.error(err.message);
