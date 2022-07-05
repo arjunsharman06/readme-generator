@@ -57,21 +57,18 @@ function renderLicenseSection(license) {
     return ''
   }
 
-  return `[![${license} License]${renderLicenseBadge(license)}]${renderLicenseLink(license)}`;
+  return `[${license}]${renderLicenseLink(license)}`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  console.log(data);
-
   return ` 
 # ${data.Title}
 
-## ${Object.keys(data)[6]}
-${renderLicenseSection(data.License)}
+[![${data.License} License]${renderLicenseBadge(data.License)}]${renderLicenseLink(data.License)}
 
 ## ${Object.keys(data)[1]}
-  ### ${data.Description} 
+${data.Description} 
 
 ## Table Of Content
 ${generateTableOfContent(data)}
@@ -80,13 +77,22 @@ ${generateTableOfContent(data)}
 ${formatEditorData(data.Installation)}
 
 ## ${Object.keys(data)[3]}
-${data.Usage}
+ ${data.Usage}
+ ${formatEditorData ("./assets/images/" + data.ScreenShot)}
 
-## ${Object.keys(data)[4]}
+## ${Object.keys(data)[6]}
 ${data.Contribution}
     
-## ${Object.keys(data)[5]}
-${formatEditorData(data.TestCase)}    
+## ${Object.keys(data)[7]}
+${formatEditorData(data.TestCase)}
+
+## ${Object.keys(data)[8]}
+${renderLicenseSection(data.License)}
+
+## Questions
+For any queestion you can reach out to me through :
+ * Email : ${data.Email}
+ * Github : ${'https://github.com/' + data.Github}
 `
 }
 
@@ -96,7 +102,8 @@ function generateTableOfContent(content) {
   let tableContent = "";
 
   for (key in content) {
-    if (key.toLowerCase() !== "title") {
+    if (key.toLowerCase() !== "title" && key.toLowerCase() !== "email" && key.toLowerCase() 
+        !== "github" && key.toLowerCase() !== "confirmscreenshot"&& key.toLowerCase() !== "screenshot"  ) {
       tableContent += (` * [${key}](#${key.toLowerCase()})\n`);
     }
   };
@@ -113,5 +120,3 @@ function formatEditorData(data) {
 module.exports = formatEditorData;
 module.exports = generateTableOfContent;
 module.exports = generateMarkdown;
-
-
