@@ -22,6 +22,7 @@ npm index
 
 ## Usage
  Provide the details of the question in CLI as the program run .
+ 
 ![2022-07-05 11 46 29](https://user-images.githubusercontent.com/14013884/177367143-85a674f1-81ef-4f84-9c3a-26b376968932.png)
 
 ## Contribution
@@ -35,6 +36,10 @@ None
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Links
+ - Generated Flie Link : https://github.com/arjunsharman06/generated-readme-sample-
+ - Starter Code Repo : https://github.com/arjunsharman06/readme-generator
 
 ## Questions
 For any queestion you can reach out to me through :
