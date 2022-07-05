@@ -38,7 +38,7 @@ None
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Links
- - Generated Flie Link : https://github.com/arjunsharman06/generated-readme-sample-
+ - Generated File Link : https://github.com/arjunsharman06/generated-readme-sample-
  - Starter Code Repo : https://github.com/arjunsharman06/readme-generator
 
 ## Questions
