@@ -10,15 +10,15 @@ const questions = [
     "Enter your Project Title (Required)\n",
     "Provide a short description explaining the what, why, and how of your project.\n",
     "Table of Contents",
-    "What are the steps required to install your project? \n",
-    "Provide instructions for usage of the application. \n",
+    "What are the steps required to install your project? \n",    
     "Write steps so that the other developers can contribute \n",
     "Write Test Cases for your application \n",
     "Enter your Email address \n",
-    "Enter your Github username \n"
+    "Enter your Github username \n",
+    "Provide instructions for usage of the application. \n",
 ];
 
-const [title, description, , installation, usage, contribution, testcase , email , github] = questions;
+const [title, description, , installation, contribution, testcase , email , github,usage] = questions;
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -70,29 +70,6 @@ function init() {
             name: 'Installation',
             message: installation,
         },
-
-        // Usage
-        {
-            type: 'input',
-            name: 'Usage',
-            message: usage,
-        },
-        {
-            type:'confirm',
-            name: 'confirmScreenShot',
-            message:"Do you want to include screen-shot for the usage \n",           
-        },
-        {
-            type:'input',
-            name: 'ScreenShot',
-            message:"Add your screen-shot in folder assets/images and provide the file name with format i.e image.png",
-            when:({confirmScreenShot}) =>{
-                if(confirmScreenShot)
-                    return true;
-                else 
-                    return false;
-            }
-        },
         
         // Contribution
         {
@@ -126,7 +103,30 @@ function init() {
             type: 'input',
             name: 'Github',
             message: github,
-        }
+        },
+
+        // Usage
+        {
+            type: 'input',
+            name: 'Usage',
+            message: usage,
+        },
+        {
+            type:'confirm',
+            name: 'confirmScreenShot',
+            message:"Do you want to include screen-shot for the usage \n",           
+        },
+        {
+            type:'input',
+            name: 'ScreenShot',
+            message:"Add your screen-shot in folder assets/images and provide the file name with format i.e image.png",
+            when:({confirmScreenShot}) =>{
+                if(confirmScreenShot)
+                    return true;
+                else 
+                    return false;
+            }
+        },
     ]);
 }
 

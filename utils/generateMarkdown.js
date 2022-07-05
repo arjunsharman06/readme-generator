@@ -3,7 +3,7 @@
 function renderLicenseBadge(license) {
 
   if (license.toLowerCase() === 'none') {
-    return ''
+    return ' '
   }
 
   switch (license.toLowerCase(license)) {
@@ -29,7 +29,7 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
 
   if (license.toLowerCase() === 'none') {
-    return ''
+    return ' '
   }
 
   switch (license.toLowerCase(license)) {
@@ -54,18 +54,29 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license.toLowerCase() === 'none') {
-    return ''
+    return ' '
   }
 
   return `[${license}]${renderLicenseLink(license)}`;
 }
 
+//Create a function that returns the badge section of README
+// If there is no license, return an empty string
+function renderBadgeSection(license) {
+  if (license.toLowerCase() === 'none') {
+    return ' '
+  }
+
+  return `[![${license} License]${renderLicenseBadge(license)}]${renderLicenseLink(license)}`;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+
   return ` 
 # ${data.Title}
 
-[![${data.License} License]${renderLicenseBadge(data.License)}]${renderLicenseLink(data.License)}
+${renderBadgeSection(data.License)}
 
 ## ${Object.keys(data)[1]}
 ${data.Description} 
@@ -76,17 +87,17 @@ ${generateTableOfContent(data)}
 ## ${Object.keys(data)[2]}
 ${formatEditorData(data.Installation)}
 
-## ${Object.keys(data)[3]}
+## ${Object.keys(data)[8]}
  ${data.Usage}
- ${formatEditorData ("./assets/images/" + data.ScreenShot)}
+ ![Image](./assets/images/${data.ScreenShot})
 
-## ${Object.keys(data)[6]}
+## ${Object.keys(data)[3]}
 ${data.Contribution}
     
-## ${Object.keys(data)[7]}
+## ${Object.keys(data)[4]}
 ${formatEditorData(data.TestCase)}
 
-## ${Object.keys(data)[8]}
+## ${Object.keys(data)[5]}
 ${renderLicenseSection(data.License)}
 
 ## Questions
@@ -114,6 +125,7 @@ function generateTableOfContent(content) {
 // Function to format the editor data
 function formatEditorData(data) {
   let content = "";
+
   return content.concat("```bash\n" + `${data}` + " \n ```");
 }
 
