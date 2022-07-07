@@ -25,6 +25,11 @@ npm index
  
 ![2022-07-05 11 46 29](https://user-images.githubusercontent.com/14013884/177367143-85a674f1-81ef-4f84-9c3a-26b376968932.png)
 
+
+
+https://user-images.githubusercontent.com/14013884/177686199-41198b57-43fa-4cfd-ab71-7d493c62588c.mp4
+
+
 ## Contribution
 It's an open source , so feel free to fork it and start contributing.
 
